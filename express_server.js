@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 
 function generateRandomString(len, arr) {
   const result = Math.random().toString(36).slice(2);
-  return result;
+  return result.substring(0, 6);
 }
 
 const urlDatabase = {
@@ -36,13 +36,21 @@ app.get("/hello", (req, res) => {
 app.get("/urls", (req, res) => {
   const templateVars = { urls: urlDatabase };
   res.render("urls_index", templateVars);
-  console.log(req.body);
-  res.send("Ok");    
+  //console.log(req.body);
+  //res.send("Ok");    
 });
 
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
+
+app.post("/urls/:shortURL/delete", (req, res) => {
+  const url = req.params.shortURL;
+  console.log("THIS IS SOME DELETE FUNCTION");
+  console.log(url);
+  delete urlDatabase[url];
+  res.redirect('/urls');
+})
 
 app.post("/urls", (req, res) => {
   const randomString = generateRandomString();
