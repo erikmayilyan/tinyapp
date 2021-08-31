@@ -50,7 +50,17 @@ app.post("/urls/:shortURL/delete", (req, res) => {
   console.log(url);
   delete urlDatabase[url];
   res.redirect('/urls');
-})
+});
+
+app.post("/urls/reroute/:shortURL", (req, res) => {
+  res.redirect(`/urls/${req.params.shortURL}`);
+});
+
+app.post("/urls/:shortURL", (req, res) => {
+  const newLong = req.body.longURL;
+  urlDatabase[req.params.shortURL] = newLong;
+  res.redirect(`/urls/${req.params.shortURL}`);
+});
 
 app.post("/urls", (req, res) => {
   const randomString = generateRandomString();
