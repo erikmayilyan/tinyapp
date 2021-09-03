@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <title>URL - TinyApp Example</title>
+</head>
+<body>
+  <%- include('_header') %>
+  <h1>LOG IN</h1>
+  <form class="form" action="/login" method="POST">
+    <br>
+    <br />
+    <h5>Email: </h5><input type="email" name="email" placeholder="email"/>
+    <br />
+    <br />
+    <h5>Password: </h5><input type="password" name="password" placeholder="password"/>
+    <br>
+    <br>
+    <input type="submit" placeholder="SUBMIT"/>
+  </form>

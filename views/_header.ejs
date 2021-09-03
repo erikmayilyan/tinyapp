@@ -8,7 +8,17 @@
       <div class="navbar-nav">
         <a class="nav-item nav-link" href="/urls">My URLs</a>
         <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
+        <% if (!user) { %>
+          <a class="nav-item nav-link" href="/register">Registration</a>
+          <a class="nav-item nav-link" href="/login">Log In</a>
+        <% } %>
       </div>
     </div>
+    <% if (user) { %>
+      <form method="POST" action="/logout">
+        <h5>You are logged In! <%= user.email %></h5>
+        <input value="LOG OUT" type="submit" />
+      </form>
+    <% } %>
   </nav>
 </header>
